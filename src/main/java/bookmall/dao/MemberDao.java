@@ -46,13 +46,12 @@ public class MemberDao {
 			DBConn.close(conn, pstmt, rs);
 		}
 		
-		System.out.println("***** Member List *****");
+		System.out.println("====== memberlist ======");
 		
 		for(MemberVo vo : result) {
 			System.out.println(vo);
 		}
 		
-		System.out.println("*** Member List END ***");
 		
 		return result;
 	}

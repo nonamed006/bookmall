@@ -8,9 +8,9 @@ public class MemberTest {
 	public static void main(String[] args) {
 		MemberDao.findAll();
 		
-		//MemberVo vo = new MemberVo("ÀÌÇÏÀ±", "qwe", "123", "399-3535");
+		MemberVo vo = new MemberVo("ì¥ì€ì£¼", "eunju@gmail.com", "1111", "010-3399-3535");
 		
-		//MemberDao.insert(vo);
+		MemberDao.insert(vo); 
 		
 		MemberDao.findAll();
 		

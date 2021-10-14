@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import bookmall.dto.BookDto;
-import bookmall.vo.BookVo;
+import bookmall.dto.OrderbookDto;
+import bookmall.vo.OrderbookVo;
 
-public class BookDao {
-	public static List<BookDto> findAll() {
-		List<BookDto> result = new ArrayList<BookDto>();
+public class OrderBookDao {
+	public static List<OrderbookDto> findAll() {
+		List<OrderbookDto> result = new ArrayList<OrderbookDto>();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -21,23 +21,22 @@ public class BookDao {
 		try {
 			conn = DBConn.getConn();
 			
-			String sql = "select a.no, a.title, a.price, b.name from book as a inner join category as b on a.category_no = b.no";
+			String sql = "select a.order_no, b.title, a.count, a.price from order_book as a inner join book as b on a.book_no = b.no";
 			pstmt = conn.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				Long no = rs.getLong(1);
+				int orderNo = rs.getInt(1);
 				String title = rs.getString(2);
-				int price = rs.getInt(3);
-				String categoryName = rs.getString(4);
+				int count = rs.getInt(3);
+				int price = rs.getInt(4);
 				
-				BookDto dto = new BookDto();
-				dto.setNo(no);
+				OrderbookDto dto = new OrderbookDto();
+				dto.setOrderNo(orderNo);
 				dto.setTitle(title);
+				dto.setCount(count);
 				dto.setPrice(price);
-				dto.setCategoryName(categoryName);
 
-				
 				result.add(dto);
 			}
 		} catch (SQLException e) {
@@ -46,30 +45,30 @@ public class BookDao {
 			DBConn.close(conn, pstmt, rs);
 		}
 		
-		System.out.println("====== booklist ======");
+		System.out.println("====== orderbooklist ======");
 		
-		for(BookDto dto : result) {
+		for(OrderbookDto dto : result) {
 			System.out.println(dto);
 		}
 		
-
 		
 		return result;
 	}
 	
-	public static void insert(BookVo vo) {
+	public static void insert(OrderbookVo vo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			conn = DBConn.getConn();
-			String sql = "insert into book values(null, ?, ?, ?)";
+			String sql = "insert into order_book values(?, ?, ?, ?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, vo.getTitle());
-			pstmt.setInt(2, vo.getPrice());
-			pstmt.setLong(3, vo.getCategoryNo());
+			pstmt.setInt(1, vo.getOrderNo());
+			pstmt.setInt(2, vo.getBook_no());
+			pstmt.setInt(3, vo.getCount());
+			pstmt.setInt(4, vo.getPrice());
 			
 			int count = pstmt.executeUpdate();
 			

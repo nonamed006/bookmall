@@ -6,7 +6,7 @@ import bookmall.vo.CategoryVo;
 public class CategoryTest {
 	public static void main(String[] args) {
 		
-		CategoryVo vo = new CategoryVo("¼Ò¼³");
+		CategoryVo vo = new CategoryVo("ì†Œì„¤");
 		
 		CategoryDao.insert(vo);
 		

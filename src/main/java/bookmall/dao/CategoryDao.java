@@ -40,13 +40,12 @@ public class CategoryDao {
 			DBConn.close(conn, pstmt, rs);
 		}
 		
-		System.out.println("***** Member List *****");
+		System.out.println("====== categorylist ======");
 		
 		for(CategoryVo vo : result) {
 			System.out.println(vo);
 		}
 		
-		System.out.println("*** Member List END ***");
 		
 		return result;
 	}

@@ -1,11 +1,25 @@
 package bookmall.vo;
 
 public class OrderVo {
-	private Long no;
+	private Long no; 
 	private String orderNum;
 	private int price;
 	private String address;
 	private int memberNo;
+	
+	
+	
+	public OrderVo() {
+		super();
+	}
+
+	public OrderVo(String orderNum, int price, String address, int memberNo) {
+		super();
+		this.orderNum = orderNum;
+		this.price = price;
+		this.address = address;
+		this.memberNo = memberNo;
+	}
 	
 	public Long getNo() {
 		return no;

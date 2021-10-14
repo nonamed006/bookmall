@@ -5,9 +5,9 @@ import bookmall.vo.BookVo;
 
 public class BookTest {
 	public static void main(String[] args) {
-		//BookVo vo = new BookVo("Æ®¿ÍÀÏ¶óÀÕ", 12000, 1L);
+		BookVo vo = new BookVo("íŠ¸ì™€ì¼ë¼ì‡", 12000, 1L);
 		
-		//BookDao.insert(vo);
+		BookDao.insert(vo);
 		
 		BookDao.findAll();
 	}

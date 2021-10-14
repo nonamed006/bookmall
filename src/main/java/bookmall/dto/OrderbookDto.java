@@ -1,24 +1,11 @@
-package bookmall.vo;
+package bookmall.dto;
 
-public class OrderbookVo {
+public class OrderbookDto {
 	private int orderNo;
-	private int book_no;
+	private String title;
 	private int count;
 	private int price;
 	
-	
-	
-	public OrderbookVo() {
-		super();
-	}
-
-	public OrderbookVo(int orderNo, int book_no, int count, int price) {
-		super();
-		this.orderNo = orderNo;
-		this.book_no = book_no;
-		this.count = count;
-		this.price = price;
-	}
 	
 	public int getOrderNo() {
 		return orderNo;
@@ -26,11 +13,11 @@ public class OrderbookVo {
 	public void setOrderNo(int orderNo) {
 		this.orderNo = orderNo;
 	}
-	public int getBook_no() {
-		return book_no;
+	public String getTitle() {
+		return title;
 	}
-	public void setBook_no(int book_no) {
-		this.book_no = book_no;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public int getCount() {
 		return count;
@@ -43,6 +30,11 @@ public class OrderbookVo {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	
+	@Override
+	public String toString() {
+		return "OrderbookDto [orderNo=" + orderNo + ", title=" + title + ", count=" + count + ", price=" + price + "]";
 	}
 	
 	

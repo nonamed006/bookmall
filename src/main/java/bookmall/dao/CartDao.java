@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bookmall.dto.CartDto;
-import bookmall.vo.BookVo;
 import bookmall.vo.CartVo;
 
 public class CartDao {
@@ -52,13 +51,12 @@ public class CartDao {
 			DBConn.close(conn, pstmt, rs);
 		}
 		
-		System.out.println("***** Member List *****");
+		System.out.println("====== cartlist ======");
 		
 		for(CartDto dto : result) {
 			System.out.println(dto);
 		}
 		
-		System.out.println("*** Member List END ***");
 		
 		return result;
 	}
